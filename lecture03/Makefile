@@ -4,7 +4,7 @@ TARGET=		hello hello-asm
 all:		$(TARGET)
 
 %:		%.c
-	gcc -g -gdwarf-2 -std=gnu99 -Wall -o $@ $<
+	gcc -Wall -g -std=gnu99 -o $@ $<
 
 %:		%.s
 	as -o $@.o $<
