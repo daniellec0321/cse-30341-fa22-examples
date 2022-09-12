@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
         } else if (result == 0) {   /* Update counter */
             counter++;
         } else {                    /* Handle command */
-            if (fgets(buffer, BUFSIZ, stdin) == NULL) {
+            if (!fgets(buffer, BUFSIZ, stdin)) {
                 break;
             }
 
