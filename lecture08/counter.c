@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         fputs(PROMPT, stdout); fflush(stdout);
 
         // Read input
-        if (fgets(buffer, BUFSIZ, stdin) == NULL) {
+        if (!fgets(buffer, BUFSIZ, stdin)) {
             break;
         }
         buffer[strlen(buffer) - 1] = 0;
