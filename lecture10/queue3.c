@@ -53,9 +53,11 @@ int	queue_pop(Queue *q) {
     if (value != q->sentinel) {
         q->reader = (q->reader + 1) % q->capacity;
         q->size--;
+        cond_signal(&q->consumed);          // Wake up producer thread
+    } else {
+        cond_signal(&q->produced);          // Wake up producer thread
     }
 
-    cond_signal(&q->consumed);              // Wake up producer thread
     mutex_unlock(&q->lock);         
     return value;
 }
