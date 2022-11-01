@@ -28,9 +28,6 @@ struct block {
     char     data[];    /* Label for user accessible block data */
 };
 
-#define BLOCK_FROM_POINTER(ptr) \
-    (Block *)((intptr_t)(ptr) - sizeof(Block))
-
 Block * block_allocate(size_t size) {
     intptr_t allocated = sizeof(Block) + ALIGN(size);
     Block *  block     = sbrk(allocated);
